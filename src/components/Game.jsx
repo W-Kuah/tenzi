@@ -89,8 +89,8 @@ export default function Game(props) {
   }
 
   const handleReset = () => {
-    // setDice(() => genAllNewDice())
-    setDice(testDice);
+    setDice(() => genAllNewDice())
+    // setDice(testDice);
     setRolls(0);
   }
 
