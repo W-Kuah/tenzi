@@ -28,7 +28,7 @@ const testDice = [
     rolls: 0
   },
   {
-    value: 3,
+    value: 4,
     isHeld: false,
     id: nanoid(),
     animating: false,
@@ -89,8 +89,8 @@ export default function Game(props) {
   }
 
   const handleReset = () => {
-    setDice(() => genAllNewDice())
-    // setDice(testDice);
+    // setDice(() => genAllNewDice())
+    setDice(testDice);
     setRolls(0);
   }
 
