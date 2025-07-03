@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useWindowSize } from 'react-use';
 import './App.css';
 import Game from './components/Game';
 import Selector from './components/Selector';
 import Confetti from 'react-confetti';
 
 function App() {
-  const [gameState, setGameState] = useState('intro');
+  const [gameState, setGameState] = useState();
   const [rolls, setRolls] = useState(0);
   const [topScores, setTopScores] = useState({
     4:[],
@@ -28,13 +29,12 @@ function App() {
   });
   const [numOfDice, setNumOfDice] = useState(10);
 
-  const width = window.innerWidth
-  const height = document.body.scrollHeight
+  const { width, height } = useWindowSize()
   
   return (
     <>
+      {gameState === 'finished' ? <Confetti numberOfPieces={100} width={width} height={height}/> : null}
       <main>
-        {gameState === 'finished' ? <Confetti numberOfPieces={100} width ={width} height={height}/> : null}
         <hr className='decorative upper'/>
         <h1>Tenzi</h1>
         <hr className='decorative lower'/>

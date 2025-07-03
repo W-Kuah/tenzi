@@ -330,6 +330,7 @@ button.rolling {
 
 .scores {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   height: auto;
   justify-content: space-around;
