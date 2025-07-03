@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useWindowSize } from 'react-use';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Game from './components/Game';
 import Selector from './components/Selector';
@@ -29,11 +28,20 @@ function App() {
   });
   const [numOfDice, setNumOfDice] = useState(10);
 
-  const { width, height } = useWindowSize()
-  
+  const [height, setHeight] = useState(document.body.scrollHeight > window.innerHeight ? document.body.scrollHeight : window.innerHeight);
+  const [width, setWidth] = useState(document.body.scrollWidth > window.innerWidth ? document.body.scrollWidth : window.innerWidth);
+
+  useEffect (() => {
+    setHeight(document.body.scrollHeight > window.innerHeight ? document.body.scrollHeight : window.innerHeight);
+  }, [document.body.scrollHeight, window.innerHeight]);
+
+  useEffect (() => {
+    setWidth(document.body.scrollWidth > window.innerWidth ? document.body.scrollWidth : window.innerWidth);
+  }, [document.body.scrollWidth, window.innerWidth]);
+
   return (
     <>
-      {gameState === 'finished' ? <Confetti numberOfPieces={100} width={width} height={height}/> : null}
+      {gameState === 'finished' ? <Confetti style={{position:'fixed'}} numberOfPieces={100} width={width} height={height}/> : null}
       <main>
         <hr className='decorative upper'/>
         <h1>Tenzi</h1>
