@@ -6,7 +6,7 @@ import Selector from './components/Selector';
 import Confetti from 'react-confetti';
 
 function App() {
-  const [gameState, setGameState] = useState();
+  const [gameState, setGameState] = useState('intro');
   const [rolls, setRolls] = useState(0);
   const [topScores, setTopScores] = useState({
     4:[],
