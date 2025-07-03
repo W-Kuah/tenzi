@@ -1,0 +1,368 @@
+body {
+  background-color: #0B2434;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#root { 
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 0px;
+  font-family: Barrio;
+  font-size: 3.5em;
+}
+
+h3 {
+  text-align: center;
+}
+
+main {
+  background-color: #F5f5f5;
+  /* height: 100%; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left:clamp(10px, 4vw, 20px);
+  padding-right:clamp(10px, 4vw, 20px);
+  padding-bottom: clamp(10px, 4vw, 20px);
+}
+
+button {
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 6px 21px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+}
+
+hr {
+  width: 100%;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+
+hr.decorative {
+  width: 10rem;
+  box-shadow: 0px 3px 3px 0px #0b24344e, 0px 1px 2px 0px #0b243420;
+}
+
+.decorative.upper {
+  margin-top: 30px;
+}
+
+.decorative.lower {
+  margin-bottom: 30px;
+}
+
+/* Intro Block */
+
+.introBlock{
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+.introText{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: rgb(34, 34, 34);
+}
+
+
+/* Selector */
+.selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.selector > hr {
+  margin-bottom: -20px;
+}
+
+.selector > p {
+  margin-bottom: -2.5px;
+  font-weight: lighter;
+}
+
+.selector > label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.selector button {
+  border-color: #0B2434;
+  color: #0B2434;
+  background: white;
+}
+
+.selector button:hover{
+  border-color: white;
+  color: white;
+  background: #0B2434;
+}
+
+/* Game */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions{
+  text-align: center;
+  font-family: 1em;
+  margin-bottom: 20px;
+  color: rgb(34, 34, 34);
+}
+
+.gameInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.gameInfo > span {
+  color: rgb(58, 58, 58);
+  font-weight: light;
+  font-size: 0.85em;
+}
+
+/* Board */
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: clamp(10px, 8vw, 20px); */
+  margin-bottom: 25px;
+  border-radius: 30px;
+  background: #d4d4d4;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  padding: 1rem;
+  
+}
+
+.roll {
+  height: 50px;
+  /* white-space: nowrap; */
+  width: 100px;
+  /* padding: 6px 21px; */
+  border: none;
+  /* border-radius: 6px; */
+  background-color: #5035FF;
+  color: white;
+  /* font-size: 1.2rem; */
+  margin-bottom: 20px;
+  
+}
+
+.roll:hover:not(.rolling) {
+  background-color: white;
+  border: solid #5035FF 3px;
+  color: #5035FF;
+  font-weight: bold;
+}
+
+button.rolling {
+  background-color: rgb(173, 173, 173);
+  color: black;
+  cursor: wait;
+}
+
+/* Die */
+
+.diceContainer {
+    display: grid;
+    place-items: center;
+    transform-origin: center;
+    transform: scale(0.6);
+    width: 100px;
+    height: 100px;
+    margin: -5px;
+}
+
+.die {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+}
+
+.die.hold > .face {
+  border: #59E391 solid 10px;
+}
+
+@keyframes rolling {
+    50% {
+        transform: rotateX(455deg) rotateY(455deg);
+    }
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 5px solid #f6f3f0;
+    transform-style: preserve-3d;
+    background: linear-gradient(
+        145deg, #dddbd8, #fff
+    );
+}
+
+.face::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: #f6f3f0;
+    transform: translateZ(-1px);
+}
+
+.face::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #131210;
+}
+
+.front {
+    transform: translateZ(50px);
+}
+
+.back {
+    transform: rotateX(180deg) translateZ(50px);
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+.front::after {
+    width: 30px;
+    height: 30px;
+    background: #f63330;
+    margin: -15px 0 0 -15px;
+}
+
+.back::after {
+    margin: -35px 0 0 -30px;
+    box-shadow: 40px 0, 0 25px, 40px 25px, 0 50px, 40px 50px;
+}
+
+.top::after {
+    margin: -30px 0 0 -30px;
+    box-shadow: 40px 40px;
+}
+
+.bottom::after {
+    margin: -36px 0 0 -36px;
+    box-shadow: 26px 26px, 52px 52px, 52px 0, 0 52px;
+}
+
+.right::after {
+    margin: -30px 0 0 -30px;
+    box-shadow: 40px 0, 0 40px, 40px 40px;
+}
+
+.left::after {
+    margin: -35px 0 0 -35px;
+    box-shadow: 25px 25px, 50px 50px;
+}
+
+.scoreboard {
+  border: 1px solid rgb(86, 86, 86);
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.scoreboard > * {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.scoreboard > label {
+  text-align: center;
+}
+
+.scoreboard > h3 {
+  margin-top: 10px;
+}
+
+.scores {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  /* border: #0B2434 1px solid; */
+}
+
+.scoreGroup {
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreGroup >  span {
+  font-family: Barrio;
+  font-size:clamp(1.5em, 4vw, 4em);
+  text-align: center;
+}
+
+.scoreIcon{
+  width: clamp(1.9em, 4vw, 4em);
+}
+
+
+@media screen and (max-width: 576px) {
+
+  .diceContainer {
+    transform: scale(0.4);
+    margin: -20px;
+  }
+}
