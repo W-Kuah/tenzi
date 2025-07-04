@@ -108,7 +108,6 @@ hr.decorative {
 }
 
 .selector button:hover{
-  /* border-color: white; */
   color: white;
   background: #0B2434;
 }
