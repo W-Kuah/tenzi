@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       {gameState === 'finished' ? <Confetti style={{position:'fixed'}} numberOfPieces={100} width={width} height={height}/> : null}
-      <div aria-live="polite">
+      <div aria-live="polite" className='sr-only'>
         {gameState === 'intro' ? 'Select your number of dice and play' : (gameState ==='finished' ? 'Congratulations! You won! Press "New Game" to Start again' : '')}
       </div>
       <main>
