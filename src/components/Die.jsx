@@ -60,6 +60,8 @@ export default function Die(props) {
         className={classStyle}
         ref={dieRef}
         onClick={animating ? null : hold}
+        aria-label={`Die with value ${value}, ${isHeld ? 'held' : 'not held'}`}
+        aria-pressed={isHeld}
       >
         <div className="face front"></div>
         <div className="face back"></div>
