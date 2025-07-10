@@ -9,6 +9,13 @@ export default function Die(props) {
 
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+  const handleKeyDown = (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      hold?.();
+    }
+  };
+
   const rollDice = (num) => {
     return new Promise(resolve => {
       if (!dieRef.current) return;
@@ -60,6 +67,7 @@ export default function Die(props) {
         className={classStyle}
         ref={dieRef}
         onClick={animating ? null : hold}
+        onKeyDown={handleKeyDown}
         aria-label={`Die with value ${value}, ${isHeld ? 'held' : 'not held'}`}
         aria-pressed={isHeld}
         role="button"

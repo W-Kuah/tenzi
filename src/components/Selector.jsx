@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import Select from 'react-select'
 
 export default function Selector(props) {
@@ -33,6 +33,11 @@ export default function Selector(props) {
     setNumOfDice(parseInt(selectedVal));
     setGameState('play')
   }
+
+  useEffect(() => {
+    selectRef.current.focus();
+  }, [])
+
 
   return (
     <div className="selector">

@@ -203,6 +203,14 @@ button.rolling {
   transition: 1s ease;
 }
 
+.diceContainer:focus-within::after  {
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border:rgb(123, 123, 215) dashed 3px;
+}
+
 .die.hold > .face {
   border: #59E391 solid 10px;
 }
